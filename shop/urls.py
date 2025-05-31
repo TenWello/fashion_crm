@@ -1,24 +1,14 @@
 # shop/urls.py
+
 from django.urls import path
-from .views import (
-    DashboardView,
-    CustomerListView, CustomerDetailView,
-    ProductListView, ProductDetailView,
-    OrderListView, OrderDetailView,
-)
+from . import views
+
+app_name = 'shop'
 
 urlpatterns = [
-    path('', DashboardView.as_view(), name='dashboard'),
-
-    # Mijozlar
-    path('customers/', CustomerListView.as_view(), name='customer_list'),
-    path('customers/<int:pk>/', CustomerDetailView.as_view(), name='customer_detail'),
-
-    # Mahsulotlar
-    path('products/', ProductListView.as_view(), name='product_list'),
-    path('products/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
-
-    # Buyurtmalar
-    path('orders/', OrderListView.as_view(), name='order_list'),
-    path('orders/<int:pk>/', OrderDetailView.as_view(), name='order_detail'),
+    path('', views.dashboard, name='dashboard'),
+    # Kelajakda qo‘shimcha URL’lar qo‘shish mumkin:
+    # path('customers/', views.customer_list, name='customer_list'),
+    # path('products/', views.product_list, name='product_list'),
+    # path('orders/', views.order_list, name='order_list'),
 ]

@@ -1,11 +1,13 @@
-# crm_fashion/urls.py (misol)
+# crm/urls.py
 from django.contrib import admin
-from django.urls import path, include
-from django.contrib.auth import views as auth_views
+from django.urls import path
+from shop.views import DashboardView  # bu joy to‘g‘ri import qilinishi kerak
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('shop.urls')),
-    path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    path('', DashboardView.as_view(), name='dashboard'),
+    # boshqa sahifalar, masalan:
+    # path('customers/', CustomerListView.as_view(), name='customer_list'),
+    # path('orders/', OrderListView.as_view(), name='order_list'),
+    # path('products/', ProductListView.as_view(), name='product_list'),
 ]
