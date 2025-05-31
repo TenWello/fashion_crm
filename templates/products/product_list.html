@@ -1,0 +1,57 @@
+{# templates/products/product_list.html #}
+{% extends 'base.html' %}
+
+{% block title %}Mahsulotlar - CRM Fashion{% endblock title %}
+{% block page_header %}Mahsulotlar ro‘yxati{% endblock page_header %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Mahsulotlar</h3>
+                    <a href="#" class="btn btn-success btn-sm float-right">Yangi mahsulot</a>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nomi</th>
+                                <th>Narxi</th>
+                                <th>Stock</th>
+                                <th>Yaratilgan sanasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in products %}
+                            <tr>
+                                <td>{{ product.id }}</td>
+                                <td>
+                                    <a href="{% url 'product_detail' product.pk %}">
+                                        {{ product.name }}
+                                    </a>
+                                </td>
+                                <td>{{ product.price }} ₼</td>
+                                <td>{{ product.stock }}</td>
+                                <td>{{ product.created_at|date:"Y-m-d" }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5">Mahsulot topilmadi</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer clearfix">
+                    {% if is_paginated %}
+                    {# sahifalash HTML sini yuqoridagi misol kabi yozing #}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

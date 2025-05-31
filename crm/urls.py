@@ -1,15 +1,11 @@
+# crm_fashion/urls.py (misol)
 from django.contrib import admin
 from django.urls import path, include
-
-from shop.views import RegisterView
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',           include('shop.urls',      namespace='shop')),
-    path('customers/', include('customers.urls', namespace='customers')),
-    path('products/',  include('products.urls',  namespace='products')),
-    path('orders/',    include('orders.urls',    namespace='orders')),
-    path('inventory/', include('inventory.urls',namespace='inventory')),
-    path('', RegisterView.as_view(), name='home'),
-    path('register/', RegisterView.as_view(), name='register'),
+    path('', include('shop.urls')),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
 ]

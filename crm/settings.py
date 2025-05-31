@@ -49,9 +49,9 @@ ROOT_URLCONF = 'crm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # Project-darajasidagi templates papkani qo‘shamiz
+        # Mana shu qator albatta bo‘lishi kerak:
         'DIRS': [ BASE_DIR / 'templates' ],
-        'APP_DIRS': True,  # app ichidagi templates papkalarini ham qidirsin
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
